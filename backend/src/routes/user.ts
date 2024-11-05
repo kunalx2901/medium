@@ -1,4 +1,4 @@
-import { signinInput, signupInput } from "@kunalxdev2901/common";
+import { signinInput, signupInput } from "@kunalxdev2901/comman-package";
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { Hono } from "hono";
@@ -32,7 +32,8 @@ userRouter.post('/signup', async(c) => {
         const user = await prisma.user.create({
           data:{
             email:body.email,
-            password:body.password
+            password:body.password,
+            name:body.name
           }
         })
 
@@ -45,7 +46,7 @@ userRouter.post('/signup', async(c) => {
     })
 
 
-userRouter.get('/signin', async(c) => {
+userRouter.post('/signin', async(c) => {
       
       const prisma = new PrismaClient({
         datasourceUrl: c.env.DATABASE_URL,

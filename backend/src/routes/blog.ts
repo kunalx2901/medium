@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { Hono } from "hono";
 import { verify } from "hono/jwt";
-import { blogInput , updateBlogInput } from "@kunalxdev2901/common";
+import { blogInput , updateBlogInput } from "@kunalxdev2901/comman-package";
 
 export const blogRouter = new Hono<{
     Bindings:{
@@ -10,7 +10,8 @@ export const blogRouter = new Hono<{
         MY_SECRET_KEY:string
     },
     Variables:{
-        userId: string
+        userId: string,
+        name:string
     }
 }>()
 
@@ -60,7 +61,7 @@ blogRouter.post('/', async(c) => {
         data:{
             title:body.title,
             content:body.content,
-            authorId:userId
+            authorId:userId,
         }
     })
 
@@ -109,7 +110,18 @@ blogRouter.get('/bulk', async(c) => {
         datasourceUrl: c.env.DATABASE_URL,
         }).$extends(withAccelerate())
 
-    const blogs = await prisma.post.findMany({})
+    const blogs = await prisma.post.findMany({
+        select:{
+            content:true,
+            title:true,
+            id:true,
+            author:{
+                select:{
+                    name:true
+                }
+            }
+        }
+    })
 
     return c.json({
         blogs

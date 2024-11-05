@@ -3,7 +3,8 @@ import {z} from 'zod'
 
 export const signupInput = z.object({
     email:z.string().email(),
-    password:z.string().min(6)
+    password:z.string().min(6),
+    name:z.string().min(3)
 })
 
 
@@ -14,15 +15,15 @@ export const signinInput = z.object({
 
 
 export const blogInput = z.object({
-    email:z.string().email(),
-    password:z.string().min(6)
+    title:z.string().min(15),
+    content:z.string().min(30),
+    authorName:z.string().optional()
 })
 
 
 export const updateBlogInput = z.object({
-    email:z.string().email(),
-    password:z.string().min(6),
-    id:z.string()
+    title: z.string().optional(),
+    content: z.string().optional(),
 })
 
 
