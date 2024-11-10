@@ -5,6 +5,7 @@
     "deploy": "wrangler deploy --minify src/index.ts"
   },
   "dependencies": {
+    "@kunalxdev2901/comman-pack": "^1.0.0",
     "@kunalxdev2901/comman-package": "^1.0.0",
     "@kunalxdev2901/common": "^1.0.0",
     "@kunalxdev2901/common-app": "^1.0.0",

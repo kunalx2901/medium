@@ -1,4 +1,4 @@
-import { signinInput, signupInput } from "@kunalxdev2901/comman-package";
+import { signinInput, signupInput } from "@kunalxdev2901/comman-pack";
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { Hono } from "hono";
