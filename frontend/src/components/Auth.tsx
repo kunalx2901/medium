@@ -1,4 +1,4 @@
-import { SignupInput } from "@kunalxdev2901/comman-package"
+import { SignupInput } from "@kunalxdev2901/comman-pack"
 import axios from "axios"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
@@ -11,6 +11,7 @@ export const Auth = ({type}:{type:string})=>{
     const [postInputs , setPostInputs] = useState<SignupInput>({
         email: "",
         password: "",
+        name:""
     })
 
     async function sendRequest(){

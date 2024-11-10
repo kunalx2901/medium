@@ -4,13 +4,15 @@ interface BlogCardInputs {
     authorName : string,
     title:string,
     content:string,
-    publishedDate:string
+    publishedDate:string,
+    id:string
 }
 export const BlogCard = ({
     authorName,
     title,
     content,
-    publishedDate
+    publishedDate,
+    id
 
 }:BlogCardInputs)=>{
 
@@ -29,7 +31,7 @@ export const BlogCard = ({
             </div>
         </div>
     <div className="font-bold text-xl mt-2">
-        <Link to={``}>
+        <Link to={`/blog/${id}`}>
         {title}
         </Link>
     </div>
