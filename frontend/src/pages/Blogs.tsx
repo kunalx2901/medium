@@ -16,13 +16,13 @@ export const Blogs = ()=>{
     <div>
         <Appbar/>
     </div>
-    <div>
+    <div className="absolute top-16">
         {blogs.map((blog)=>{
             return <BlogCard authorName={blog.author.name || "Anonymous"}
             title={blog.title}
             content={blog.content}
             publishedDate="10th Oct, 2024"
-            id={blog.id}
+            id={blog.id.toString()}
             />
         })}
         

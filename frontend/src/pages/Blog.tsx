@@ -18,7 +18,7 @@ export const Blog = ()=>{
         <Appbar/>
     </div>
     <div>
-        <FullBlog blog={blog}/>
+        <FullBlog blog={blog || {content : "", title : "", author : {name : ""}, id : ""}}/>
     </div>
     </>
 }

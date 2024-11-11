@@ -21,7 +21,7 @@ export const BlogCard = ({
         <div className="flex m-1 gap-2">
             <div className="flex gap-2 justify-center items-center">
                         <Avatar name={authorName}/>
-                    <div className="">
+                    <div className="text-lg font-semibold">
                         {authorName} 
                     </div>
                     <div className="font-thin flex justify-center items-center gap-2 text-slate-500">
@@ -30,12 +30,12 @@ export const BlogCard = ({
                     </div>
             </div>
         </div>
-    <div className="font-bold text-xl mt-2">
+    <div className="font-semibold text-3xl mt-2">
         <Link to={`/blog/${id}`}>
         {title}
         </Link>
     </div>
-    <div className="font-normal">
+    <div className="font-light text-xl ">
         {content.slice(0,80) + "..."}
     </div>
     <div className="text-sm text-slate-500 mt-2">
