@@ -27,9 +27,7 @@ blogRouter.use('/*' , async(c,next)=>{
     }
     else{
         c.status(403);
-        c.json({
-            error:"you are not logged in !"
-        })
+        c.json("you are not logged in !")
     }
     }
     catch(e){
@@ -52,9 +50,7 @@ blogRouter.post('/', async(c) => {
 
     if(!success){
       c.status(411);
-      return c.json({
-        message:"inputs are not correct !"
-      })
+      return c.json("inputs are not correct !")
     }
 
     const blog = await prisma.post.create({
@@ -83,9 +79,7 @@ blogRouter.put('/', async(c) => {
 
     if(!success){
       c.status(411);
-      return c.json({
-        message:"inputs are not correct !"
-      })
+      return alert("inputs are not correct !")
     }
 
     const blog = await prisma.post.update({
@@ -110,22 +104,27 @@ blogRouter.get('/bulk', async(c) => {
         datasourceUrl: c.env.DATABASE_URL,
         }).$extends(withAccelerate())
 
-    const blogs = await prisma.post.findMany({
-        select:{
-            content:true,
-            title:true,
-            id:true,
-            author:{
-                select:{
-                    name:true
+    try{
+        const blogs = await prisma.post.findMany({
+            select:{
+                content:true,
+                title:true,
+                id:true,
+                author:{
+                    select:{
+                        name:true
+                    }
                 }
             }
-        }
-    })
+        })
+        return c.json({
+            blogs
+        })
+    }catch(e){
+        c.status(411);
+        c.json("inputs are not correct !")
+    }
 
-    return c.json({
-        blogs
-    })
 })
 
 blogRouter.get('/:id', async(c) => {
@@ -159,9 +158,7 @@ blogRouter.get('/:id', async(c) => {
    }
    catch(e){
     c.status(411);
-    c.json({
-        error:"error while fetching the data !"
-    })
+    c.json("inputs are not correct !")
    }
 
 })

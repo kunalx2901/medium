@@ -24,9 +24,7 @@ userRouter.post('/signup', async(c) => {
 
         if(!success){
           c.status(411);
-          return c.json({
-            message:"inputs are not correct !"
-          })
+          return c.json("inputs are not correct !")
         }
     
         const user = await prisma.user.create({
@@ -40,7 +38,8 @@ userRouter.post('/signup', async(c) => {
         const token = await sign({id:user.id} , c.env.MY_SECRET_KEY)
     
         return c.json({
-          jwt:token
+          jwt:token,
+          name:user.name
         })
     
     })
@@ -57,15 +56,18 @@ userRouter.post('/signin', async(c) => {
 
       if(!success){
         c.status(411);
-        return c.json({
-          message:"inputs are not correct !"
-        })
+        return c.json("inputs are not correct !")
       }
     
       const user = await prisma.user.findUnique({
         where:{
           email:body.email,
           password:body.password
+        },
+        select:{
+          id:true,
+          email:true,
+          name:true
         }
       })
     
@@ -79,7 +81,8 @@ userRouter.post('/signin', async(c) => {
     
       return c.json({
         email:body.email,
-        jwt:token
+        jwt:token,
+        name:user.name
       })
       
     })
