@@ -1,4 +1,4 @@
-{
+{ "homepage": "http://localhost:5173/signup",
   "name": "frontend",
   "private": true,
   "version": "0.0.0",

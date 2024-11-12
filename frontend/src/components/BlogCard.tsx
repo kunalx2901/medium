@@ -57,8 +57,10 @@ function Circle(){
     </div>
 }
 
-export function Avatar({name}:{name:string}){
-    return <div className="relative inline-flex items-center justify-center w-6 h-6 overflow-hidden bg-gray-100         rounded-full dark:bg-gray-600">
-    <span className="font-medium text-gray-600 dark:text-gray-300 text-xs">{name[0]}</span>
-    </div>
+export const Avatar = ({name , size = "small"}  : {name:string , size?:string} ) => {
+    return <div className={ `flex items-center justify-center  overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 ${size == 'small' ? 'w-7 h-7' : 'w-10 h-10'} `}>
+    <span className={`font-medium ${size === "small" ? 'text-sm' : 'text-2xl'}  text-gray-600 dark:text-gray-300 pb-0.5`}>
+    { name[0].toUpperCase()}
+    </span>
+</div>
 }
