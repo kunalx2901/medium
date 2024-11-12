@@ -12,11 +12,11 @@ export const Publish = ()=>{
 
     return<>
     <div>
-        <Appbar/>
+        <Appbar />
     </div>
     
    <div className="flex justify-center items-center">
-   <div className="flex justify-center items-start flex-col w-[60%] ">
+   <div className="flex justify-center items-start flex-col w-[60%] mt-32">
      
    <textarea rows={1}
    onChange={(e)=>{
@@ -35,7 +35,7 @@ export const Publish = ()=>{
                 title: title,
                 content: content,
                 author:{
-                    name: "Kunal"
+                    name: localStorage.getItem("name")
                 }
             },{
                 headers: {

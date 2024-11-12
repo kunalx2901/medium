@@ -23,11 +23,11 @@ export const FullBlog = ({blog}:{blog:Blog})=>{
             <div className="text-2xl font-bold text-black gap-3 ">
                 <div className="flex gap-3">
                 <div className="relative bottom-1">
-                    <Avatar name={blog.author.name || "Anonymous"} />
+                    <Avatar size="big" name={blog.author.name || "Anonymous"} />
                 </div>
                 
                 <div >
-                 {blog.author.name || "Anonymous"}
+                 {blog.author.name.toUpperCase() || "Anonymous"}
                 </div>
                 </div>
 
