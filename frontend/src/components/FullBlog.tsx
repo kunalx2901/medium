@@ -20,7 +20,7 @@ export const FullBlog = ({blog}:{blog:Blog})=>{
                 Author
             </div>
            
-            <div className="text-2xl font-bold text-black gap-3 ">
+            <div className="text-2xl font-bold text-black gap-3">
                 <div className="flex gap-3">
                 <div className="relative bottom-1">
                     <Avatar size="big" name={blog.author.name || "Anonymous"} />
